@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <title>Friend</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container logo">   
+                <img src="image/logo_color.jpg" alt="логотип">
+        </div>
+    </header>
+
+    <main>
+        <div class="container main-container">
+            <div class="welcome">
+                <h1 class="h1">Вход</h1>
+                <p class="text">Продолжим работу с психологом? <br>
+                    Введи свой номер телефона и пароль
+                </p>
+
+                <form action="pages/profil.html" class="form">
+                    <input type="tel" class="input" name="phone" pattern="[0-9]{11,11}"
+                     id="phone" placeholder="+7 000 000 00 00" required>
+                    <span class="mistake">Не хватает одной цифры</span>
+
+                    <input type="password" id="password"
+                     name="password" class="input input-password"
+                      placeholder="Пароль" required>
+                    <span class="mistake">Попробуй отключить Capslock</span>
+
+                    <button type="submit" class="button">Отправить</button>
+                </form>
+
+                <p class="text-small">
+                    Впервые у нас? Сначала <a href="pages/registration.html">зарегистрируйся</a>
+                </p>
+
+            </div>
+              
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-small">
+                <a href="#">Забыл пароль?</a>
+            </p>
+        </div>
+    </footer>
+
+    
+    <script>
+
+        let phone = document.getElementById('phone');
+        let mistakes = document.querySelectorAll('.mistake');
+        let button = document.querySelector('.button');
+
+        phone.addEventListener('blur', () => {
+            let mistake = mistakes[0];
+
+            if (phone.value.length !== 11) {
+                mistake.style.display = 'block';
+                phone.style.border = '1px solid #F90B27';
+
+                let count = ['одной цифры', 'двух цифр', 'трех цифр', 
+                'четырех цифр', 'пяти цифр', 'шести цифр', 'семи цифр', 
+                'восьми цифр', 'девяти цифр', 'десяти цифр', 'одиннадцати цифр']
+
+                mistake.textContent = phone.value.length < 11 ? `Не хватает ${count[11-phone.value.length-1]}` : 'Слишком много цифр';
+            
+                button.setAttribute('disabled', true);
+            }
+            else {
+                button.removeAttribute('disabled');
+            }
+        })
+
+        phone.addEventListener('focus', () => {
+            let mistake = mistakes[0];
+            mistake.style.display = 'none';
+            phone.style.border = '1px solid #7C7C7C';
+        })
+
+        let password = document.getElementById('password');
+
+        password.addEventListener('blur', () => {
+            let mistake = mistakes[1];
+            if (password.value.length < 8 ) {
+                mistake.style.display = 'block';
+                password.style.border = '1px solid #F90B27';
+
+                button.setAttribute('disabled', true);
+            }
+            else {
+                button.removeAttribute('disabled');
+            }
+        })
+
+        password.addEventListener('focus', () => {
+            let mistake = mistakes[1];
+            mistake.style.display = 'none';
+            password.style.border = '1px solid #7C7C7C';
+        })
+        
+    </script>
+</body>
+</html>

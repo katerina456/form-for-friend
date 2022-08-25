@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../mobile.css">
+    <title>Friend</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container logo">   
+            <img src="../image/logo_color.jpg" alt="логотип">
+        </div>
+    </header>
+
+    <main>
+        <div class="container main-container">
+            <div class="welcome">
+                <h1 class="h1 h1-sms">Регистрация</h1>
+                <p class="text text-registration">Введи полученный из СМС код
+                </p>
+
+                <form action="enterInfo.html" class="form">
+                    <input type="number" name="number" id="number" class="input" 
+                    required pattern="[0-9]{4,4}">
+                    <span class="mistake">Не хватает одной цифры</span>
+                    
+                    <button type="submit" class="button">Отправить</button>
+                </form>
+
+                <p class="text-small text-small-registration align-desktop">
+                    <a href="../index.html">Отправить код снова 0:15</a>
+                </p>
+                <p class="text-small align align-mobile">
+                    или <br><a href="../index.html">Войти</a>
+                </p>
+            </div>
+              
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-small">
+            <p class="align-desktop">Не приходит код? 
+                <a href="#">Зарегистрироваться через email</a>
+            </p>
+            <p class="align align-mobile">При входе на сервис вы принимаете 
+                <a href="#">Политику конфиденциальности</a> и
+                <a href="#">Условия использования сервиса</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        let number = document.getElementById('number');
+        let mistake = document.querySelector('.mistake');
+
+        number.addEventListener('blur', () => {
+            let button = document.querySelector('.button');
+
+            if (number.value.length !== 4) {
+                mistake.style.display = 'block';
+                number.style.border = '1px solid #F90B27';
+
+                let count = ['одной цифры', 'двух цифр', 'трех цифр', 
+                'четырех цифр']
+
+                mistake.textContent = number.value.length < 4 ? `Не хватает ${count[4-number.value.length-1]}` : 'Слишком много цифр';
+                
+                button.setAttribute('disabled', true);
+            }
+            else {
+                button.removeAttribute('disabled');
+            }
+        })
+
+        number.addEventListener('focus', () => {
+            
+            mistake.style.display = 'none';
+            number.style.border = '1px solid #7C7C7C';
+        })
+
+    </script>
+
+</body>
+</html>

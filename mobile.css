@@ -1,0 +1,61 @@
+@media screen and (max-width: 760px) {
+    .container {
+        max-width: 360px;
+    }
+
+    .logo {
+        padding: 14px;
+    }
+
+    .main-container {
+        margin-top: 24px;
+        background-image: none;
+        height: 363px; 
+    }
+
+    .welcome {
+        margin-left: 0;
+    }
+
+    .h1 {
+        margin-bottom: 21px;
+    }
+
+    .text {
+        margin-bottom: 34px;
+    }
+
+    .footer {
+        padding: 42px;
+    }
+
+    .h1-sms {
+        margin-bottom: 48px;
+    }
+
+    .align-desktop {
+        display: none;
+    }
+    
+    .align-mobile {
+        display: block;
+    }
+
+    .identify {
+        margin-top: 130px;
+    }
+
+    .text-identify {
+        font-size: 20px;
+        line-height: 28px;
+        text-align: center;
+    }
+
+    .button {
+        font-size: 20px;
+    }
+
+    .button-green {
+        font-size: 18px;
+    }
+}

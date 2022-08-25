@@ -1,0 +1,313 @@
+/* index.html и общие стили для всех страниц */
+
+body * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+@font-face {
+    src: url('fonts/Co_Headline_Corp.ttf');
+    font-family: "Co Headline Corp";
+}
+
+@font-face {
+    src: url('fonts/Co_Headline_Corp_Bold.ttf');
+    font-family: "Co Headline Corp Bold";
+}
+
+@font-face {
+    src: url('fonts/Co_Headline_Corp_Light.ttf');
+    font-family: "Co Headline Corp Light";
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+
+    font-family: 'Co Headline Corp Light', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    color: #000000;
+}
+
+.header {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 10px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    padding: 26px;
+}
+
+.main-container {
+    display: flex;
+    align-items: center;
+    background-image: url(image/image1.jpg);
+    height: 636px;
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+.welcome {
+    margin-left: 710px;
+}
+
+.h1 {
+    font-size: 24px;
+    line-height: 20px;
+    text-align: center;
+    font-weight: 700;
+    font-family: 'Co Headline Corp Bold', Arial, Helvetica, sans-serif;
+
+    margin-bottom: 32px;
+    margin-top: 0;
+}
+
+.text {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+
+    margin: 4px 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    background: #FFFFFF;
+    border: 1px solid #7C7C7C;
+    border-radius: 100px;
+    width: 353px;
+    height: 56px;
+    margin-top: 16px;
+    padding-left: 20px;
+
+    font-family: 'Co Headline Corp', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.input-password {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.input::placeholder {
+    font-family: 'Co Headline Corp Light', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #7C7C7C;
+}
+
+.mistake {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 20px;
+    color: #F90B27;
+    margin-left: 24px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.button {
+    width: 353px;
+    height: 56px;
+    background: #8C50A6;
+    border-radius: 100px;
+    border: 0;
+
+    font-family: 'Co Headline Corp', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #FFFFFF;
+
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+.button:disabled {
+    background: #C4C4C4
+}
+
+.text-small {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+
+    margin: 0;
+    margin-left: 20px;
+}
+
+a {
+    color: #9931CC;
+    text-decoration: none;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    padding: 28px;
+}
+
+/* стили окна регистрации */
+
+.text-registration {
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 28px;
+}
+
+.text-small-registration {
+    text-align: center;
+}
+
+.align {
+    text-align: center;
+}
+
+.align-desktop {
+    display: block;
+}
+
+.align-mobile {
+    display: none;
+}
+
+/* стили для profil.html */
+
+.way {
+    margin-left: 101px;  
+    margin-top: 10px;
+}
+
+.way a {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #959494;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.h1-profil {
+    text-align: left;
+    margin-bottom: 26px;
+}
+
+.about {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    color: #959494;
+
+    margin-bottom: 4px;
+}
+
+.info {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+    margin-bottom: 22px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    margin-top: 67px;
+}
+
+/* стили ввода данных */
+
+.form-info {
+    width: 320px;
+}
+
+.h1-margin {
+    margin-bottom: 47px;
+    margin-left: 20px;
+    text-align: left;
+}
+
+.div-margin {
+    margin: 24px 0 0;
+}
+
+.text-form {
+    font-family: 'Co Headline Corp Bold', Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0 20px 16px;
+}
+
+.label-form {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0 20px 6px; 
+}
+
+.input-form {
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    border-radius: 100px;
+    margin-bottom: 12px;
+    width: 320px;
+    height: 56px;
+    font-family: 'Co Headline Corp Light', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+    padding: 0 20px;
+}
+
+.about-form {
+    width: 273px;
+    margin: 0 20px 20px;
+    display: block;
+}
+
+.button-green {
+    background: #50DE97;
+    width: 320px;
+    margin-top: 12px;
+}
+
+.red {
+    color: #F90B27;
+}
+
+.identify {
+    margin-top: 225px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-identify {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 42px;
+    margin: 0;
+    margin-bottom: 39px;
+}

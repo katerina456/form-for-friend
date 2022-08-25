@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../mobile.css">
+    <title>Friend</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container logo">   
+                <img src="../image/logo_color.jpg" alt="логотип">
+        </div>
+    </header>
+
+    <main>
+        <div class="container ">
+            
+            <div class="center">
+                
+                <form action="identificator.html" class="form form-info">
+                    <h1 class="h1 h1-margin">Укажи личные данные</h1>
+                    
+                    <div class="div-margin">
+                        <p class="text-form">Придумай пароль</p>
+                        <label for="password" class="label-form">Пароль <span class="red">*</span></label>
+                        <input type="password" name="password" id="password" class="input-form" required>
+                        <p class="about about-form" >
+                            Пароль должен состоять из 8ми символов и включать заглавную букву, специальный символ и цифру
+                        </p>
+                        <label for="password2" class="label-form">Повтори пароль <span class="red">*</span></label>
+                        <input type="password" name="password2" id="password2" class="input-form" required>
+                        <span class="mistake">Пароли не совпадают</span>
+                    </div>
+
+                    <div class="div-margin">
+                        <p class="text-form">Расскажи о себе</p>
+                        <label for="name" class="label-form">Имя или псевдоним <span class="red">*</span></label>
+                        <input type="text" name="name" id="name" class="input-form" required pattern="[0-9,а-я]{1,20}">
+                        <p class="about about-form">
+                            Будет доступен только твоему психологу и личному помощнику
+                        </p>
+                        <span class="mistake">Превышено допустимое количество символов: сократите 5 символов</span>
+
+                        <label for="birth" class="label-form">Дата рождения <span class="red">*</span></label>
+                        <input type="date" name="birth" id="birth" class="input-form" required>
+                        <p class="about about-form">
+                            Для получения услуг тебе должно быть 18 или больше лет. Необходимо согласие родителей
+                        </p>
+                        <span class="mistake">Для получения услуг тебе должно быть 18 или больше лет. Необходимо согласие родителей</span>
+                    </div>
+
+                    <div class="div-margin">
+                        <p class="text-form">Укажи по желанию</p>
+                        <label for="email" class="label-form">E-mail</label>
+                        <input type="email" name="email" id="email" class="input-form" >
+                        <p class="about about-form">
+                            Присылаем только информацию, связанную с твоими сессиями
+                        </p>
+                        <span class="mistake">Пропущен символ @</span>
+
+                        <label for="tg" class="label-form">Ник в Телеграм</label>
+                        <input type="text" name="tg" id="tg" class="input-form" pattern="[0-9,a-z,'_']{5,20}">
+                        <p class="about about-form">
+                            Присылаем только информацию, связанную с твоими сессиями
+                        </p>
+                        <span class="mistake">Проверьте правильность ввода</span>
+                    </div>
+
+                    <button type="submit" class="button button-green">Далее</button>
+
+                </form>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer class="footer">
+        
+    </footer>
+    
+    <script>
+        let password = document.getElementById('password');
+        let mistakes = document.querySelectorAll('.mistake');
+        let hints = document.querySelectorAll('.about-form');
+        let button = document.querySelector('.button');
+
+        password.addEventListener('blur', () => {
+            if (password.value.length < 8 ) {
+                password.style.border = '1px solid #F90B27';
+                button.setAttribute('disabled', true);
+            }
+        })
+
+        password.addEventListener('focus', () => {
+            password.style.border = '1px solid #7C7C7C';
+        })
+
+
+        let password2 = document.getElementById('password2');
+        
+        password2.addEventListener('blur', () => {
+            let mistake = mistakes[0];
+            if (password2.value.length < 8 || password.value !== password2.value) {
+                mistake.style.display = 'block';
+                password2.style.border = '1px solid #F90B27';
+                button.setAttribute('disabled', true);
+            }
+            
+        })
+
+        password2.addEventListener('focus', () => {
+            let mistake = mistakes[0];
+            mistake.style.display = 'none';
+            password2.style.border = '1px solid #7C7C7C';
+        })
+
+
+        let name = document.getElementById('name');
+        
+        name.addEventListener('blur', () => {
+            let mistake = mistakes[1];
+            let hint = hints[1];
+            if (name.value.length > 20 ) {
+                setMistake(mistake, name, hint);
+            }
+            else {
+                button.removeAttribute('disabled');
+            }
+        })
+
+        name.addEventListener('focus', () => {
+            let mistake = mistakes[1];
+            let hint = hints[1];
+            setUsual(mistake, name, hint);
+        })
+
+
+        let birth = document.getElementById('birth');
+
+        birth.addEventListener('blur', () => {
+            let mistake = mistakes[2];
+            let hint = hints[2];
+            let user = new Date(birth.value);
+
+            if (checkAdult(user)) {    
+                button.removeAttribute('disabled');
+                return
+            }
+
+            setMistake(mistake, birth, hint);
+        })
+
+        birth.addEventListener('focus', () => {
+            let mistake = mistakes[2];
+            let hint = hints[2];
+
+            setUsual(mistake, birth, hint);
+        })
+
+        
+        let email = document.getElementById('email');
+
+        email.addEventListener('blur', () => {
+            let mistake = mistakes[3];
+            let hint = hints[3];
+            if (!email.value.includes('@') ) {
+                setMistake(mistake, email, hint);
+            }
+            else {
+                button.removeAttribute('disabled');
+            }
+        })
+
+        email.addEventListener('focus', () => {
+            let mistake = mistakes[3];
+            let hint = hints[3];
+
+            setUsual(mistake, email, hint);
+        })
+
+
+        let tg = document.getElementById('tg');
+
+        tg.addEventListener('blur', () => {
+            let mistake = mistakes[4];
+            let hint = hints[4];
+            if (tg.value.length < 5) {
+                setMistake(mistake, tg, hint);
+            }
+            else {
+                button.removeAttribute('disabled');
+            }
+        })
+
+        tg.addEventListener('focus', () => {
+            let mistake = mistakes[4];
+            let hint = hints[4];
+
+            setUsual(mistake, tg, hint);
+        })
+
+        function setMistake(mistake, input, hint) {
+            mistake.style.display = 'block';
+            input.style.border = '1px solid #F90B27';
+            hint.style.display = 'none';
+            button.setAttribute('disabled', true);
+        }
+
+        function setUsual(mistake, input, hint) {
+            mistake.style.display = 'none';
+            input.style.border = '1px solid #7C7C7C';
+            hint.style.display = 'block';
+        }
+
+        function checkAdult(date) {
+            let now = new Date();
+            if (now.getFullYear() - date.getFullYear() > 18 || 
+            now.getFullYear() - date.getFullYear() === 18 && now.getMonth() > date.getMonth() || 
+            now.getFullYear() - date.getFullYear() === 18 && now.getMonth() === date.getMonth() && 
+            now.getDate() > date.getDate()) {
+                return true;
+            }
+
+            return false;
+        }
+
+    </script>
+
+</body>
+</html>
