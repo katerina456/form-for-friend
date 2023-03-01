@@ -34,7 +34,7 @@ password2.addEventListener('focus', () => {
 })
 
 
-let nameUser = document.getElementById('nameUsername');
+let nameUser = document.getElementById('name');
 
 nameUser.addEventListener('blur', () => {
     let mistake = mistakes[1];
